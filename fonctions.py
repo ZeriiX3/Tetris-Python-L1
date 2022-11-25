@@ -278,7 +278,13 @@ def grid_creation_losange(n):
         for k in range(i + 1):
             grid_losange[i][mid - k] = 1
             grid_losange[i][mid + k] = 1
-    return grid_losange
+    del grid_losange[mid + 1:]
+    temp = []
+    temp = temp + grid_losange
+    grid_losange.reverse()
+    del grid_losange[0]
+    temp += grid_losange
+    return temp
 
 
 '''STOCKAGE DANS FICHIER '''
