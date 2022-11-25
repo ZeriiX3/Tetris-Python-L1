@@ -86,6 +86,9 @@ def print_grid(grid):
 
 
 def print_blocs(condition):      # Affiche les blocs selon le type de plateau
+    print()
+    print()
+    print(15*"=")
     if condition == 1: # Triangle
         for i in triangle_list:
             for j in bloc_list[i]:
