@@ -1,3 +1,5 @@
+from math import *
+
 ''' BLOCS '''
 
 # Blocs communs
@@ -251,6 +253,8 @@ triangle_list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 1
 
 def grid_creation_triangle(n):
     grid_triangle = []
+    if n % 2 == 0:
+        n -= 1
     for i in range(n):
         k = []
         for j in range(n):
@@ -270,6 +274,8 @@ def grid_creation_triangle(n):
 
 def grid_creation_losange(n):
     grid_losange = []
+    if n % 2 == 0:
+        n -= 1
     for i in range(n):
         k = []
         for j in range(n):
@@ -293,49 +299,42 @@ def grid_creation_losange(n):
 # Création du plateau CERCLE
 
 
-def grid_creation_cercle(n):
+def grid_creation_cercle(taille):
     grid_cercle =[]
-    r = n / 2 - .5
-    for i in range(n):
-        row = []
-        for j in range(n):
-            if sqrt((i-r)*2 + (y-radius)*2) <= radius + 0.25:
-                row.append(1)
+    r = taille/2-.5
+    for x in range(taille):
+        ligne = []
+        for y in range(taille):
+            if sqrt((x-r)**2 + (y-r)**2) <= r + 0.25:
+                ligne.append(1)
             else:
-                row.append(0)
-        grid.append(row)
+                ligne.append(0)
+        grid_cercle.append(ligne)
     return grid_cercle
 
 
-'''STOCKAGE DANS FICHIER '''
+# Stock dans un ficher
+
+def save_grid(grid):
+    with open("plateau.txt", "w") as f_plateau:
+        for i in grid:
+            for j in i:
+                f_plateau.write(str(j))
+                f_plateau.write(" ")
+            f_plateau.write("\n")
+        f_plateau.close()
+
+# Symboles
 
 
-# Stock dans un ficher TRIANGLE.TXT
 
-def grid_stock_triangle(grid_triangle):
-    f_triangle = open("triangle.txt", "w")
-    for i in grid_triangle:
-        for j in i:
-            f_triangle.write(str(j))
-            f_triangle.write(" ")
-        f_triangle.write("\n")
-    f_triangle.close()
+# Affichage du plateau
 
-
-# Stock dans un ficher LOSANGE.TXT
-
-def grid_stock_losange(grid_losange):
-    f_losange = open("losange.txt", "w")
-    for i in grid_losange:
-        for j in i:
-            f_losange.write(str(j))
-            f_losange.write(" ")
-        f_losange.write("\n")
-    f_losange.close()
-
-
-# Stock dans un fichier CERCLE.TXT
-
+def print_grid(grid):
+    for i in range(len(grid)):
+        for j in range(len(grid[i])):
+            print(grid[i][j], end="")
+        print()
 
 # Affichage des BLOCS
 
@@ -351,6 +350,9 @@ def print_blocs(grid):      # Affichage des blocs selon le type de plateau
         for i in cercle_list:
             print(bloc_list[i])
 
+'''
+def gamemode_random():
+'''
 
 
 """
