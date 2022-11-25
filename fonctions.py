@@ -1,7 +1,7 @@
 ''' BLOCS '''
 
 # Blocs communs
-Bloc_list = [[[1, 0],
+bloc_list = [[[1, 0],
               [1, 1]
               ],
              [[0, 1],
@@ -241,6 +241,9 @@ triangle_list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 1
 # APPLICATION
 
 
+
+
+
 '''CREATION DES PLATEAUX'''
 
 
@@ -290,6 +293,20 @@ def grid_creation_losange(n):
 # Création du plateau CERCLE
 
 
+def grid_creation_cercle(n):
+    grid_cercle =[]
+    r = n / 2 - .5
+    for i in range(n):
+        row = []
+        for j in range(n):
+            if sqrt((i-r)*2 + (y-radius)*2) <= radius + 0.25:
+                row.append(1)
+            else:
+                row.append(0)
+        grid.append(row)
+    return grid_cercle
+
+
 '''STOCKAGE DANS FICHIER '''
 
 
@@ -318,6 +335,21 @@ def grid_stock_losange(grid_losange):
 
 
 # Stock dans un fichier CERCLE.TXT
+
+
+# Affichage des BLOCS
+
+
+def print_blocs(grid):      # Affichage des blocs selon le type de plateau
+    if grid == 1: # Triangle
+        for i in triangle_list:
+            print(bloc_list[i])
+    elif grid == 2: # Losange
+        for i in losange_list:
+            print(bloc_list[i])
+    elif grid == 3: # Cercle
+        for i in cercle_list:
+            print(bloc_list[i])
 
 
 
