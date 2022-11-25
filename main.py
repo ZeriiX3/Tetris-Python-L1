@@ -1,5 +1,5 @@
 from fonctions import *
-
+from blocs import *
 
 print("Bienvenue sur TETRIS")
 start = 0
@@ -33,10 +33,10 @@ elif choix_plateau == 2:
 elif choix_plateau == 3:
     mat = grid_creation_cercle(taille)
 
-
-print_blocs(choix_plateau)
-
-save_grid(mat)
+"""
+print_blocs(choix_plateau) # Affiche les BLOCS
+"""
+save_grid(mat) # Enregistre le plateau dans le ficher PLATEAU.TXT
 print_grid(mat)
 
 
