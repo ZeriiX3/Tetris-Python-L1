@@ -33,9 +33,10 @@ elif choix_plateau == 2:
 elif choix_plateau == 3:
     mat = grid_creation_cercle(taille)
 
-"""
-print_blocs(choix_plateau) # Affiche les BLOCS
-"""
+
+print_blocs(choix_plateau)     # Affiche les BLOCS
+
+
 save_grid(mat) # Enregistre le plateau dans le ficher PLATEAU.TXT
 print_grid(mat)
 

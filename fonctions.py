@@ -84,20 +84,30 @@ def print_grid(grid):
 
 # Affichage des BLOCS
 
-'''
-def print_blocs(grid):      # Affichage des blocs selon le type de plateau
-    if grid == 1: # Triangle
+
+def print_blocs(condition):      # Affiche les blocs selon le type de plateau
+    if condition == 1: # Triangle
         for i in triangle_list:
-            for j in range(len(i)):
-                for k in range(len(bloc_list))
-            print(bloc_list[i])
-    elif grid == 2: # Losange
+            for j in bloc_list[i]:
+                for k in j:
+                    print(k,end="")
+                print()
+            print()
+    elif condition == 2: # Losange
         for i in losange_list:
-            print(bloc_list[i])
-    elif grid == 3: # Cercle
+            for j in bloc_list[i]:
+                for k in j:
+                    print(k, end="")
+                print()
+            print()
+    elif condition == 3: # Cercle
         for i in cercle_list:
-            print(bloc_list[i])
-'''
+            for j in bloc_list[i]:
+                for k in j:
+                    print(k, end="")
+                print()
+            print()
+
 
 
 '''
