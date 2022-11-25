@@ -280,17 +280,20 @@ def grid_creation_losange(n):
             grid_losange[i][mid + k] = 1
     del grid_losange[mid + 1:]
     temp = []
-    temp = temp + grid_losange
+    temp += grid_losange
     grid_losange.reverse()
     del grid_losange[0]
     temp += grid_losange
     return temp
 
 
+# Création du plateau CERCLE
+
+
 '''STOCKAGE DANS FICHIER '''
 
 
-# Stock dans ficher TRIANGLE.TXT
+# Stock dans un ficher TRIANGLE.TXT
 
 def grid_stock_triangle(grid_triangle):
     f_triangle = open("triangle.txt", "w")
@@ -302,7 +305,7 @@ def grid_stock_triangle(grid_triangle):
     f_triangle.close()
 
 
-# Stock dans ficher LOSANGE.TXT
+# Stock dans un ficher LOSANGE.TXT
 
 def grid_stock_losange(grid_losange):
     f_losange = open("losange.txt", "w")
@@ -314,6 +317,10 @@ def grid_stock_losange(grid_losange):
     f_losange.close()
 
 
+# Stock dans un fichier CERCLE.TXT
+
+
+
 """
 def read_grid(path):
     grid = []
@@ -323,7 +330,6 @@ def read_grid(path):
             for l in cont:
                 grid.append(l)
     return grid
-
 
     elif path == 2:
         return grid_losange
