@@ -4,7 +4,27 @@ from blocs import *
 
 # APPLICATION
 
-
+def start():
+    start = 0
+    while start != 1 and start != 2:
+        print("Tapez 1 pour commencer à jouer")
+        print("Tapez 2 pour afficher les règles")
+        print(">>>", end=" ")
+        start = int(input())
+    if start == 1:
+        taille = int(input("Entrez la dimension du plateau : "))  # Définition de la taille du plateau
+        while taille < 20 or taille > 40:
+            print("Valeur trop grande/petite!")
+            taille = int(input("Entrez une nouvelle dimension : "))
+    if start == 2:
+        print("Voici les règles du jeu :")
+        s = int(input("1 : Commencez à jouer"))
+        if s == 1:
+            taille = int(input("Entrez la dimension du plateau : "))  # Définition de la taille du plateau
+            while taille < 20 or taille > 40:
+                print("Valeur trop grande/petite!")
+                taille = int(input("Entrez une nouvelle dimension : "))
+    return taille
 
 # Création du plateau TRIANGLE
 
@@ -52,7 +72,7 @@ def grid_creation_cercle(taille):
     return grid_cercle
 
 
-# Stock dans un ficher
+# Stockage dans un ficher
 
 def save_grid(grid):
     with open("plateau.txt", "w") as f_plateau:
@@ -63,14 +83,20 @@ def save_grid(grid):
             f_plateau.write("\n")
         f_plateau.close()
 
-# Symboles
+# Symboles ASCII
 
-def sym(val):
+def symb(val):
     if val == 0:
         return " "
     elif val == 1:
         return "□"
     elif val == 2:
+        return "■"
+
+def symb_blocs(val):
+    if val == 0:
+        return " "
+    elif val == 1:
         return "■"
 
 
@@ -79,35 +105,56 @@ def sym(val):
 def print_grid(grid):
     for i in range(len(grid)):
         for j in range(len(grid[i])):
-            print(sym(grid[i][j]), end=" ")
+            print(symb(grid[i][j]), end=" ")
         print()
+
+
+def print_grid_cadre(mat):
+    hauteur = len(mat)
+    longueur = len(mat[0])
+
+    print("    ", end="")
+    for lettres in minuscule[:hauteur]:
+        print(lettres, end=" ")
+
+    print("\n  ", end="")
+
+    print("╔", end="")
+    print("═"* (2 * longueur + 1), end="")
+    print("╗")
+
+    for i in range(hauteur):
+        print(majuscule[i] + " " + "║", end=" ")
+        print("║")
+
+    print("  ", end="")
+    print("╚" + "═"*(2 * longueur + 1) + "╝")
 
 # Affichage des BLOCS
 
-
 def print_blocs(condition):      # Affiche les blocs selon le type de plateau
     print()
+    print(30 * "=")
     print()
-    print(15*"=")
     if condition == 1: # Triangle
         for i in triangle_list:
             for j in bloc_list[i]:
                 for k in j:
-                    print(k,end="")
+                    print(symb_blocs(k),end=" ")
                 print()
             print()
     elif condition == 2: # Losange
         for i in losange_list:
             for j in bloc_list[i]:
                 for k in j:
-                    print(k, end="")
+                    print(symb_blocs(k), end=" ")
                 print()
             print()
     elif condition == 3: # Cercle
         for i in cercle_list:
             for j in bloc_list[i]:
                 for k in j:
-                    print(k, end="")
+                    print(symb_blocs(k), end=" ")
                 print()
             print()
 
