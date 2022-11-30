@@ -18,7 +18,7 @@ elif choix_plateau == 3:
 
 print_blocs(choix_plateau)     # Affiche les BLOCS
 
-print_grid_cadre(mat)
+print_grid(mat)
 
 save_grid(mat) # Enregistre le plateau dans le ficher PLATEAU.TXT
 

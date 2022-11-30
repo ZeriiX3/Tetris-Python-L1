@@ -12,8 +12,8 @@ def start():
         print(">>>", end=" ")
         start = int(input())
     if start == 1:
-        taille = int(input("Entrez la dimension du plateau : "))  # Définition de la taille du plateau
-        while taille < 20 or taille > 40:
+        taille = int(input("Entrez une dimension du plateau entre 21 et 35 inclus: "))  # Définition de la taille du plateau
+        while taille < 21 or taille > 35:
             print("Valeur trop grande/petite!")
             taille = int(input("Entrez une nouvelle dimension : "))
     if start == 2:
@@ -25,6 +25,7 @@ def start():
                 print("Valeur trop grande/petite!")
                 taille = int(input("Entrez une nouvelle dimension : "))
     return taille
+
 
 # Création du plateau TRIANGLE
 
@@ -57,7 +58,6 @@ def grid_creation_losange(n):
 
 # Création du plateau CERCLE
 
-
 def grid_creation_cercle(taille):
     grid_cercle =[]
     r = taille/2-.5
@@ -83,6 +83,7 @@ def save_grid(grid):
             f_plateau.write("\n")
         f_plateau.close()
 
+
 # Symboles ASCII
 
 def symb(val):
@@ -102,33 +103,34 @@ def symb_blocs(val):
 
 # Affichage du plateau
 
-def print_grid(grid):
+def plateau(grid):
     for i in range(len(grid)):
+        print(majuscule[i] + " " + "║", end=" ") # affiche la lettre majuscule + la colonne
         for j in range(len(grid[i])):
-            print(symb(grid[i][j]), end=" ")
-        print()
+            print(symb(grid[i][j]), end=" ")   # affiche les éléments de la matrice grid correspondant au plateau
+        print("║")
 
+# Tableau + Cadre
 
-def print_grid_cadre(mat):
+def print_grid(mat):
     hauteur = len(mat)
     longueur = len(mat[0])
 
+    # affiche les lettres minuscules en lignes
     print("    ", end="")
     for lettres in minuscule[:hauteur]:
         print(lettres, end=" ")
-
     print("\n  ", end="")
 
+    # affiche la première ligne du cadre
     print("╔", end="")
     print("═"* (2 * longueur + 1), end="")
     print("╗")
 
-    for i in range(hauteur):
-        print(majuscule[i] + " " + "║", end=" ")
-        print("║")
-
+    plateau(mat) # affichage du plateau à partir de la fonction
     print("  ", end="")
-    print("╚" + "═"*(2 * longueur + 1) + "╝")
+    print("╚" + "═"*(2 * longueur + 1) + "╝") # affiche la dernière ligne du cadre
+
 
 # Affichage des BLOCS
 
