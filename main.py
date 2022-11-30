@@ -5,7 +5,6 @@ from form import *
 
 bienvenue() # Affichage de texte
 
-
 taille = start()    # Début du jeu
 
 

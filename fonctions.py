@@ -1,5 +1,6 @@
 from math import *
 from blocs import *
+from form import *
 
 
 # APPLICATION
@@ -17,9 +18,10 @@ def start():
             print("Valeur trop grande/petite!")
             taille = int(input("Entrez une nouvelle dimension : "))
     if start == 2:
-        print("Voici les règles du jeu :")
-        print("blablabla\n")
-        s = int(input("Tapez 1 pour commencer à jouer : "))
+        regle_jeu()
+        s = int(input("Tapez 1 pour commencer à jouer\n>>> "))
+        while s != 1:
+            s = int(input("Tapez 1 pour commencer à jouer\n>>> "))
         if s == 1:
             taille = int(input("Entrez la dimension du plateau : "))  # Définition de la taille du plateau
             while taille < 21 or taille > 35:
