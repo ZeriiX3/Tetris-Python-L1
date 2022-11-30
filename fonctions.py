@@ -18,10 +18,11 @@ def start():
             taille = int(input("Entrez une nouvelle dimension : "))
     if start == 2:
         print("Voici les règles du jeu :")
-        s = int(input("1 : Commencez à jouer"))
+        print("blablabla\n")
+        s = int(input("Tapez 1 pour commencer à jouer : "))
         if s == 1:
             taille = int(input("Entrez la dimension du plateau : "))  # Définition de la taille du plateau
-            while taille < 20 or taille > 40:
+            while taille < 21 or taille > 35:
                 print("Valeur trop grande/petite!")
                 taille = int(input("Entrez une nouvelle dimension : "))
     return taille
@@ -61,10 +62,10 @@ def grid_creation_losange(n):
 def grid_creation_cercle(taille):
     grid_cercle =[]
     r = taille/2-.5
-    for x in range(taille):
+    for i in range(taille):
         ligne = []
-        for y in range(taille):
-            if sqrt((x-r)**2 + (y-r)**2) <= r + 0.25:
+        for j in range(taille):
+            if sqrt((i-r)**2 + (j-r)**2) <= r + 0.25:
                 ligne.append(1)
             else:
                 ligne.append(0)
@@ -110,15 +111,13 @@ def plateau(grid):
             print(symb(grid[i][j]), end=" ")   # affiche les éléments de la matrice grid correspondant au plateau
         print("║")
 
-# Tableau + Cadre
 
-def print_grid(mat):
-    hauteur = len(mat)
+def print_grid(mat):             # Plateau + Cadre
     longueur = len(mat[0])
 
     # affiche les lettres minuscules en lignes
     print("    ", end="")
-    for lettres in minuscule[:hauteur]:
+    for lettres in minuscule[:longueur]:
         print(lettres, end=" ")
     print("\n  ", end="")
 
