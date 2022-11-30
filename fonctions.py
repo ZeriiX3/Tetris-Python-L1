@@ -19,11 +19,12 @@ def start():
             taille = int(input("Entrez une nouvelle dimension : "))
     if start == 2:
         regle_jeu()
+        print()
         s = int(input("Tapez 1 pour commencer à jouer\n>>> "))
         while s != 1:
             s = int(input("Tapez 1 pour commencer à jouer\n>>> "))
         if s == 1:
-            taille = int(input("Entrez la dimension du plateau : "))  # Définition de la taille du plateau
+            taille = int(input("Entrez une dimension du plateau entre 21 et 35 inclus: "))  # Définition de la taille du plateau
             while taille < 21 or taille > 35:
                 print("Valeur trop grande/petite!")
                 taille = int(input("Entrez une nouvelle dimension : "))
@@ -137,8 +138,6 @@ def print_grid(mat):             # Plateau + Cadre
 
 def print_blocs(condition):      # Affiche les blocs selon le type de plateau
     print()
-    print(30 * "=")
-    print()
     if condition == 1: # Triangle
         for i in triangle_list:
             for j in bloc_list[i]:
@@ -192,6 +191,7 @@ def print_random_blocs(condition):          # Affiche 3 Blocs au hasard selon le
 def gamemode():     # Demande à l'utilisateur de choisir un mode de jeu
     mode = 0
     while mode != 1 and mode != 2:
+        print()
         print("Tapez 1 pour afficher tout les blocs")
         print("Tapez 2 pour afficher 3 blocs au hasard")
         print(">>>", end=" ")
