@@ -162,10 +162,46 @@ def print_blocs(condition):      # Affiche les blocs selon le type de plateau
             print()
 
 
+def print_random_blocs(condition):          # Affiche 3 Blocs au hasard selon le thype du plateau
+    print()
+    print(30 * "=")
+    print()
+    if condition == 1:  # Triangle
+        for i in triangle_list:
+            for j in bloc_list[i]:
+                for k in j:
+                    print(symb_blocs(k), end=" ")
+                print()
+            print()
+    elif condition == 2:  # Losange
+        for i in losange_list:
+            for j in bloc_list[i]:
+                for k in j:
+                    print(symb_blocs(k), end=" ")
+                print()
+            print()
+    elif condition == 3:  # Cercle
+        for i in cercle_list:
+            for j in bloc_list[i]:
+                for k in j:
+                    print(symb_blocs(k), end=" ")
+                print()
+            print()
 
-'''
-def gamemode_random():
-'''
+
+def gamemode():     # Demande à l'utilisateur de choisir un mode de jeu
+    mode = 0
+    while mode != 1 and mode != 2:
+        print("Tapez 1 pour afficher tout les blocs")
+        print("Tapez 2 pour afficher 3 blocs au hasard")
+        print(">>>", end=" ")
+        mode = int(input())
+    if mode == 1:
+        x = 1
+    elif mode == 2:
+        x = 2
+    return x
+
 
 
 """
