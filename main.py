@@ -24,6 +24,7 @@ elif choix_plateau == 3:
 
 
 choix_mode = select_bloc()      # Choisis le mode de jeu
+
 print_grid(mat)  # Affiche le plateau du jeu
 
 

@@ -1,4 +1,5 @@
 import random
+import os
 from math import *
 from blocs import *
 from form import *
@@ -18,9 +19,11 @@ def start():
         while taille < 21 or taille > 35:
             print("Valeur trop grande/petite!")
             taille = int(input("Entrez une nouvelle dimension : "))
-    if start == 2:
-        regle_jeu()
+
+    if start == 2:          # Règle du jeu
+        regle_jeu()     # Affiche les règles du jeu
         print()
+
         s = int(input("Tapez 1 pour commencer à jouer\n>>> "))
         while s != 1:
             s = int(input("Tapez 1 pour commencer à jouer\n>>> "))
@@ -105,6 +108,9 @@ def plateau(grid):
 
 
 def print_grid(mat):             # Plateau + Cadre
+    os.system("clear")  # Mac
+    """os.system('cls')    # Windows"""
+
     longueur = len(mat[0])
 
     # affiche les lettres minuscules en lignes
