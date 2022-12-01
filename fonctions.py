@@ -77,33 +77,21 @@ def grid_creation_cercle(taille):
     return grid_cercle
 
 
-# Stockage dans un ficher
-
-def save_grid(grid):
-    with open("plateau.txt", "w") as f_plateau:
-        for i in grid:
-            for j in i:
-                f_plateau.write(str(j))
-                f_plateau.write(" ")
-            f_plateau.write("\n")
-        f_plateau.close()
-
-
 # Symboles ASCII
 
 def symb(val):
     if val == 0:
         return " "
     elif val == 1:
-        return "□"
+        return "◇"
     elif val == 2:
-        return "■"
+        return "◆"
 
 def symb_blocs(val):
     if val == 0:
         return " "
     elif val == 1:
-        return "■"
+        return "◆"
 
 
 # Affichage du plateau
@@ -192,13 +180,13 @@ def print_random_blocs(condition):          # Affiche 3 Blocs au hasard selon le
             print()
 
 
-def gamemode():     # Demande à l'utilisateur de choisir un mode de jeu
+def select_bloc():     # Demande à l'utilisateur de choisir un mode de jeu
     mode = 0
     while mode != 1 and mode != 2:
         print()
         print("Tapez 1 pour afficher tout les blocs")
         print("Tapez 2 pour afficher 3 blocs au hasard")
-        print(">>>", end=" ")
+        print(">>>",end=" ")
         mode = int(input())
     if mode == 1:
         x = 1
@@ -206,6 +194,17 @@ def gamemode():     # Demande à l'utilisateur de choisir un mode de jeu
         x = 2
     return x
 
+
+# Stockage dans un ficher
+
+def save_grid(grid):
+    with open("plateau.txt", "w") as f_plateau:
+        for i in grid:
+            for j in i:
+                f_plateau.write(str(j))
+                f_plateau.write(" ")
+            f_plateau.write("\n")
+        f_plateau.close()
 
 
 """

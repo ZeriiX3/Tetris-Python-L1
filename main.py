@@ -23,7 +23,7 @@ elif choix_plateau == 2:
 elif choix_plateau == 3:
     mat = grid_creation_cercle(taille)
 
-choix_mode = gamemode()      # Choisis le mode de jeu
+choix_mode = select_bloc()      # Choisis le mode de jeu
 
 print_grid(mat)  # Affiche le plateau du jeu
 
@@ -34,4 +34,4 @@ if choix_mode == 2:
     print_random_blocs(choix_plateau)       # Affiche 3 blocs au hasard
 
 
-save_grid(mat) # Enregistre le plateau dans le ficher PLATEAU.TXT
+save_grid(mat) # Stock le plateau dans le ficher PLATEAU.TXT
