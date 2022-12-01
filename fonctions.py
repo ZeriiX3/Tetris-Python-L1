@@ -150,12 +150,12 @@ def print_blocs(condition):      # Affiche les blocs selon le type de plateau
             print()
 
 
-def print_random_blocs(condition):          # Affiche 3 Blocs au hasard selon le thype du plateau
+def print_random_blocs(condition):          # Affiche 3 Blocs au hasard selon le type du plateau
     print()
-    list_rand = []         # Def de liste avec 3 index au hasard selon le plateau
+    list_rand = []         # Def d'une liste qui aura 3 index au hasard selon le plateau
 
     if condition == 1:  # Triangle
-        list_rand = random.sample(triangle_list,3)
+        list_rand = random.sample(triangle_list,3)      # Prend 3 index au hasard
         for i in list_rand:
             for j in bloc_list[i]:
                 for k in j:
