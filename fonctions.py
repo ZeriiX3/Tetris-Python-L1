@@ -1,3 +1,4 @@
+import random
 from math import *
 from blocs import *
 from form import *
@@ -163,24 +164,27 @@ def print_blocs(condition):      # Affiche les blocs selon le type de plateau
 
 def print_random_blocs(condition):          # Affiche 3 Blocs au hasard selon le thype du plateau
     print()
-    print(30 * "=")
-    print()
+    list_rand = []         # Def de liste avec 3 index au hasard selon le plateau
+
     if condition == 1:  # Triangle
-        for i in triangle_list:
+        list_rand = random.sample(triangle_list,3)
+        for i in list_rand:
             for j in bloc_list[i]:
                 for k in j:
                     print(symb_blocs(k), end=" ")
                 print()
             print()
     elif condition == 2:  # Losange
-        for i in losange_list:
+        list_rand = random.sample(losange_list, 3)
+        for i in list_rand:
             for j in bloc_list[i]:
                 for k in j:
                     print(symb_blocs(k), end=" ")
                 print()
             print()
     elif condition == 3:  # Cercle
-        for i in cercle_list:
+        list_rand = random.sample(cercle_list, 3)
+        for i in list_rand:
             for j in bloc_list[i]:
                 for k in j:
                     print(symb_blocs(k), end=" ")
