@@ -28,10 +28,6 @@ choix_mode = select_bloc()      # Choisis le mode de jeu
 print_grid(mat)  # Affiche le plateau du jeu
 
 
-if choix_mode == 1:
-    print_blocs(choix_plateau)              # Affiche tous les BLOCS
-if choix_mode == 2:
-    print_random_blocs(choix_plateau)       # Affiche 3 blocs au hasard
-
+affiche_tout(screen,choix_plateau,choix_mode)
 
 save_grid(mat) # Stock le plateau dans le ficher PLATEAU.TXT

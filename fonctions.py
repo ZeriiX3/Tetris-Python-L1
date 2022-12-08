@@ -48,7 +48,6 @@ def grid_creation_triangle(n):
         grid_triangle.append(k)
     mid = len(grid_triangle) // 2
     for i in range(n // 2 + 1):
-        grid_triangle[i][mid] = 1
         for k in range(i + 1):
             grid_triangle[i][mid - k] = 1
             grid_triangle[i][mid + k] = 1
@@ -88,12 +87,6 @@ def symb(val):
     elif val == 1:
         return "◇"
     elif val == 2:
-        return "◆"
-
-def symb_blocs(val):
-    if val == 0:
-        return " "
-    elif val == 1:
         return "◆"
 
 
@@ -268,6 +261,7 @@ def read_grid(path):
     elif path == 3:
         return grid_cercle
 """
+
 #Faire fonction qui laisse l'utilisateur choisir un bloc et les coordonnées où il sera poser
 
 def valid_position(grid,i,j,indice):
@@ -328,9 +322,6 @@ def print_screen(scr):
             else:
                 print(" {} ".format(scr[i][j]), end=" ")
         print()
-    print()
-    print(" ---- ")
-    print()
 
 init_screen(screen)
 
@@ -341,7 +332,7 @@ def affiche_tout(screen, choix_plateau, choix_mode):
     if choix_plateau == 1:
         if choix_mode == 1:
             for i in triangle_list:
-                insert_bloc_screen(screen, bloc_list[i], l, c, int(i))
+                insert_bloc_screen(screen, bloc_list[i], l, c, str(i))
                 c += 6
                 if c == 66:
                     l += 7
@@ -349,7 +340,7 @@ def affiche_tout(screen, choix_plateau, choix_mode):
         elif choix_mode == 2:
             rand_list = random.sample(triangle_list, 3)
             for i in range(len(rand_list)):
-                insert_bloc_screen(screen, bloc_list[triangle_list[i]], l, c, int(i))
+                insert_bloc_screen(screen, bloc_list[triangle_list[i]], l, c, str(i))
                 c += 6
                 if c == 66:
                     l += 7
@@ -357,7 +348,7 @@ def affiche_tout(screen, choix_plateau, choix_mode):
     if choix_plateau == 2:
         if choix_mode == 1:
             for i in losange_list:
-                insert_bloc_screen(screen, bloc_list[i], l, c, int(i))
+                insert_bloc_screen(screen, bloc_list[i], l, c, str(i))
                 c += 6
                 if c == 66:
                     l += 7
@@ -365,7 +356,7 @@ def affiche_tout(screen, choix_plateau, choix_mode):
         elif choix_mode == 2:
             rand_list = random.sample(losange_list, 3)
             for i in range(len(rand_list)):
-                insert_bloc_screen(screen, bloc_list[losange_list[i]], l, c, int(i))
+                insert_bloc_screen(screen, bloc_list[losange_list[i]], l, c, str(i))
                 c += 6
                 if c == 66:
                     l += 7
@@ -373,7 +364,7 @@ def affiche_tout(screen, choix_plateau, choix_mode):
     if choix_plateau == 3:
         if choix_mode == 1:
             for i in cercle_list:
-                insert_bloc_screen(screen, bloc_list[i], l, c, int(i))
+                insert_bloc_screen(screen, bloc_list[i], l, c, str(i))
                 c += 6
                 if c == 66:
                     l += 7
@@ -381,8 +372,9 @@ def affiche_tout(screen, choix_plateau, choix_mode):
         elif choix_mode == 2:
             rand_list = random.sample(cercle_list, 3)
             for i in range(len(rand_list)):
-                insert_bloc_screen(screen, bloc_list[cercle_list[i]], l, c, int(i))
+                insert_bloc_screen(screen, bloc_list[cercle_list[i]], l, c, str(i))
                 c += 6
                 if c == 66:
                     l += 7
                     c = 0
+    print_screen(screen)
