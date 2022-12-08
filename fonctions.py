@@ -213,6 +213,46 @@ def save_grid(grid):
         f_plateau.close()
 
 
+
+def row_state(grid,i):
+    ligne_pleine=True
+    for m in mat[i]:
+        if m == 1:
+            ligne_pleine = False
+    return ligne_pleine
+
+def col_state(grid,j):
+    col_pleine=True
+    for m in mat:
+        if mat[m][j]==1 :
+            col_pleine = False
+    return col_pleine
+
+def row_clear(grid,i):
+    for j in range( i , 0 , -1):
+        mat[0][j]=mat[j-1]
+
+def col_clear(grid,j):
+    for m in mat:
+        for n in range(len(m)):
+            if mat[m][n] == j:
+                mat[m][n] = 0
+    for i in range(len(grid)):
+        grid[0][i] = 0
+'''
+def update_score():
+    score=0
+    for i in mat:
+        for j in i:
+            if row_state(grid,i):
+                if j==1:
+                    score+= 1
+    for k in range(len(mat)):
+        if mat[k]
+'''
+
+
+
 """
 def read_grid(path):
     grid = []
@@ -228,3 +268,33 @@ def read_grid(path):
     elif path == 3:
         return grid_cercle
 """
+#Faire fonction qui laisse l'utilisateur choisir un bloc et les coordonnées où il sera poser
+
+def valid_position(grid,i,j,indice):
+    placement=True
+    cpt_ligne=0
+    cpt_col=0
+    while placement==True:
+        try:
+            for k in range(4,-1,-1):
+                cpt_ligne+=1
+                for p in bloc_list[indice][k]:
+                    cpt_col+=1
+                    if (p==1 and grid[i-cpt_ligne][j+cpt_col]!=1):
+                        placement=False
+        except ValueError:
+            placement=False
+    print(placement)
+    return placement
+
+'''
+def pose_bloc(grid,i,j,indice):
+    if choix_plateau==1:          #Triangle
+        for k in bloc_list[triangle_list[indice]]:
+            for m in range(len(k),0,-1):
+
+
+    elif choix_plateau==2:         #Losange
+
+    elif choix_plateau==3:         #Cercle
+'''
