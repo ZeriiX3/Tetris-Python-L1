@@ -4,8 +4,8 @@ import os
 # Mise en forme
 
 def bienvenue():
-    os.system("clear")  # Mac
-    """os.system('cls')    # Windows"""
+    '''os.system("clear") # Mac '''
+    os.system('cls')    # Windows
 
     print()
     print(45*" ", end="")
@@ -19,8 +19,8 @@ def bienvenue():
     print()
 
 def regle_jeu():
-    os.system("clear")  # Mac
-    """os.system('cls')    # Windows"""
+    '''os.system("clear") # Mac '''
+    os.system('cls')  # Windows
 
     print()
     print(45 * " ", end="")
