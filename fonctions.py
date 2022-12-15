@@ -12,6 +12,7 @@ def start():
     while start != 1 and start != 2:
         '''os.system("clear") # Mac '''
         os.system('cls')  # Windows
+        bienvenue()
         print("Tapez 1 pour commencer à jouer")
         print("Tapez 2 pour afficher les règles")
         print(">>>", end=" ")
@@ -22,15 +23,15 @@ def start():
     if start == 1:
         taille = 0
         try :
-            taille = int(input("Entrez une dimension du plateau entre 21 et 35 inclus: "))  # Définition de la taille du plateau
+            taille = int(input("Entrez une dimension du plateau entre 21 et 26 inclus: "))  # Définition de la taille du plateau
         except ValueError:
             pass
-        while taille < 21 or taille > 35:
+        while taille < 21 or taille > 26:
             '''os.system("clear") # Mac '''
             os.system('cls')  # Windows
             print("Valeur incorrecte ou trop grande/petite!")
             try :
-                taille = int(input("Entrez une nouvelle dimension : "))
+                taille = int(input("Entrez une dimension du plateau entre 21 et 26 inclus: "))
             except ValueError:
                 pass
 
@@ -52,16 +53,18 @@ def start():
                 pass
         if s == 1:
             taille = 0
+            '''os.system("clear") # Mac '''
+            os.system('cls')  # Windows
             try :
-                taille = int(input("Entrez une dimension du plateau entre 21 et 35 inclus: "))  # Définition de la taille du plateau
+                taille = int(input("Entrez une dimension du plateau entre 21 et 26 inclus: "))  # Définition de la taille du plateau
             except ValueError:
                 pass
-            while taille < 21 or taille > 35:
+            while taille < 21 or taille > 26:
                 '''os.system("clear") # Mac '''
                 os.system('cls')  # Windows
                 print("Valeur incorrecte ou trop grande/petite!")
                 try:
-                    taille = int(input("Entrez une nouvelle dimension : "))
+                    taille = int(input("Entrez une dimension du plateau entre 21 et 26 inclus: "))
                 except ValueError:
                     pass
     return taille

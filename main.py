@@ -4,9 +4,6 @@ from form import *
 from screen import *
 import time
 
-bienvenue() # Affichage de texte
-
-time.sleep(2)
 
 taille = start()    # Début du jeu
 
