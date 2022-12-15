@@ -1,6 +1,7 @@
 import os
 
 
+
 # Mise en forme
 
 def bienvenue():
@@ -17,6 +18,9 @@ def bienvenue():
     print(45*" ", end="")
     print("╚" + "═" * 75 + "╝")
     print()
+
+
+
 
 def regle_jeu():
     '''os.system("clear") # Mac '''

@@ -17,7 +17,7 @@ def insert_bloc_screen(scr, bloc, l , c, num):
             pos_x = l + i
             pos_y = c + j
             screen[pos_x][pos_y] = bloc[i][j]
-    screen[l + 6][c] = num
+        screen[l + 6][c] = num
 
 
 def print_screen(scr):

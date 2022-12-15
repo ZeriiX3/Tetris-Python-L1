@@ -10,29 +10,62 @@ from form import *
 def start():
     start = 0
     while start != 1 and start != 2:
+        '''os.system("clear") # Mac '''
+        os.system('cls')  # Windows
         print("Tapez 1 pour commencer à jouer")
         print("Tapez 2 pour afficher les règles")
         print(">>>", end=" ")
-        start = int(input())
+        try :
+            start = int(input())
+        except ValueError:
+            pass
     if start == 1:
-        taille = int(input("Entrez une dimension du plateau entre 21 et 35 inclus: "))  # Définition de la taille du plateau
+        taille = 0
+        try :
+            taille = int(input("Entrez une dimension du plateau entre 21 et 35 inclus: "))  # Définition de la taille du plateau
+        except ValueError:
+            pass
         while taille < 21 or taille > 35:
-            print("Valeur trop grande/petite!")
-            taille = int(input("Entrez une nouvelle dimension : "))
+            '''os.system("clear") # Mac '''
+            os.system('cls')  # Windows
+            print("Valeur incorrecte ou trop grande/petite!")
+            try :
+                taille = int(input("Entrez une nouvelle dimension : "))
+            except ValueError:
+                pass
 
     if start == 2:          # Règle du jeu
         regle_jeu()     # Affiche les règles du jeu
         print()
 
-        s = int(input("Tapez 1 pour commencer à jouer\n>>> "))
-        while s != 1:
+        try :
+            s = 0
             s = int(input("Tapez 1 pour commencer à jouer\n>>> "))
+        except ValueError:
+            pass
+        while s != 1:
+            '''os.system("clear") # Mac '''
+            os.system('cls')  # Windows
+            try :
+                s = int(input("Tapez 1 pour commencer à jouer\n>>> "))
+            except ValueError:
+                pass
         if s == 1:
-            taille = int(input("Entrez une dimension du plateau entre 21 et 35 inclus: "))  # Définition de la taille du plateau
+            taille = 0
+            try :
+                taille = int(input("Entrez une dimension du plateau entre 21 et 35 inclus: "))  # Définition de la taille du plateau
+            except ValueError:
+                pass
             while taille < 21 or taille > 35:
-                print("Valeur trop grande/petite!")
-                taille = int(input("Entrez une nouvelle dimension : "))
+                '''os.system("clear") # Mac '''
+                os.system('cls')  # Windows
+                print("Valeur incorrecte ou trop grande/petite!")
+                try:
+                    taille = int(input("Entrez une nouvelle dimension : "))
+                except ValueError:
+                    pass
     return taille
+
 
 
 # Création du plateau TRIANGLE
@@ -182,11 +215,16 @@ def print_random_blocs(condition):          # Affiche 3 Blocs au hasard selon le
 def select_bloc():     # Demande à l'utilisateur de choisir un mode de jeu
     mode = 0
     while mode != 1 and mode != 2:
+        '''os.system("clear") # Mac '''
+        os.system('cls')  # Windows
         print()
         print("Tapez 1 pour afficher tout les blocs")
         print("Tapez 2 pour afficher 3 blocs au hasard")
         print(">>>",end=" ")
-        mode = int(input())
+        try :
+            mode = int(input())
+        except ValueError:
+            pass
     if mode == 1:
         x = 1
     elif mode == 2:
@@ -268,20 +306,45 @@ def read_grid(path):
 
 def valid_position(grid,i,j,indice):
     placement=True
-    cpt_ligne=0
-    cpt_col=0
-    while placement==True:
-        try:
-            for k in range(4,-1,-1):
-                cpt_ligne+=1
-                for p in bloc_list[indice][k]:
-                    cpt_col+=1
-                    if (p==1 and grid[i-cpt_ligne][j+cpt_col]!=1):
-                        placement=False
-        except ValueError:
-            placement=False
+    cpt_ligne=-1
+    cpt_col=-1
+
+    try:
+        for k in range(4,-1,-1):
+            cpt_ligne+=1
+            for p in bloc_list[indice][k]:
+                cpt_col+=1
+                if (p==1 and grid[i-cpt_ligne][j+cpt_col]!=1):
+                    placement=False
+    except ValueError:
+        placement=False
     print(placement)
     return placement
+
+def bloc_x(indice):
+    x = 0
+    x_max = 0
+    for i in bloc_list[indice]:
+        for k in i:
+            if k == 1:
+                x+=1
+        if x > x_max:
+            x_max = x
+    return x_max
+
+
+
+def bloc_y(indice):
+    y = 0
+    for k in bloc_list[indice]:
+        for j in range(5):
+            if bloc_list[indice][k][j]:
+                y += 1
+                break
+    return y
+
+
+
 
 
 '''
