@@ -35,8 +35,11 @@ elif choix_plateau == 3:
 
 choix_mode = select_bloc()      # Choisis le mode de jeu
 
+init_screen(screen, choix_mode)
+
 print_grid(mat)  # Affiche le plateau du jeu
 
 affiche_tout(screen,choix_plateau,choix_mode)  # Affiche les blocs selon le type de plateau
+
 
 save_grid(mat) # Stock le plateau dans le ficher PLATEAU.TXT

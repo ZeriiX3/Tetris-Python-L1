@@ -1,10 +1,15 @@
 from fonctions import *
 
-lin = 30
-col = 70
 screen = []
 
-def init_screen(scr):
+def init_screen(scr, choix_mode):
+    if choix_mode == 1:
+        lin = 28
+        col = 70
+    elif choix_mode == 2:
+        lin = 8
+        col = 25
+
     for line in range(lin) :
         lst = []
         for e in range (col):
@@ -28,10 +33,9 @@ def print_screen(scr):
             elif scr[i][j] == 0 :
                 print("  ", end="")
             else:
-                print(" {} ".format(scr[i][j]), end=" ")
+                print("{}".format(scr[i][j]), end="")
         print()
 
-init_screen(screen)
 
 def affiche_tout(screen, choix_plateau, choix_mode):
     c = 0

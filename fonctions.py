@@ -16,30 +16,31 @@ def start():
         print("Tapez 1 pour commencer à jouer")
         print("Tapez 2 pour afficher les règles")
         print(">>>", end=" ")
-        try :
+        try:
             start = int(input())
         except ValueError:
             pass
     if start == 1:
         taille = 0
-        try :
-            taille = int(input("Entrez une dimension du plateau entre 21 et 26 inclus: "))  # Définition de la taille du plateau
+        try:
+            taille = int(
+                input("Entrez une dimension du plateau entre 21 et 26 inclus: "))  # Définition de la taille du plateau
         except ValueError:
             pass
         while taille < 21 or taille > 26:
             '''os.system("clear") # Mac '''
             os.system('cls')  # Windows
             print("Valeur incorrecte ou trop grande/petite!")
-            try :
+            try:
                 taille = int(input("Entrez une dimension du plateau entre 21 et 26 inclus: "))
             except ValueError:
                 pass
 
-    if start == 2:          # Règle du jeu
-        regle_jeu()     # Affiche les règles du jeu
+    if start == 2:  # Règle du jeu
+        regle_jeu()  # Affiche les règles du jeu
         print()
 
-        try :
+        try:
             s = 0
             s = int(input("Tapez 1 pour commencer à jouer\n>>> "))
         except ValueError:
@@ -47,7 +48,7 @@ def start():
         while s != 1:
             '''os.system("clear") # Mac '''
             os.system('cls')  # Windows
-            try :
+            try:
                 s = int(input("Tapez 1 pour commencer à jouer\n>>> "))
             except ValueError:
                 pass
@@ -55,8 +56,9 @@ def start():
             taille = 0
             '''os.system("clear") # Mac '''
             os.system('cls')  # Windows
-            try :
-                taille = int(input("Entrez une dimension du plateau entre 21 et 26 inclus: "))  # Définition de la taille du plateau
+            try:
+                taille = int(input(
+                    "Entrez une dimension du plateau entre 21 et 26 inclus: "))  # Définition de la taille du plateau
             except ValueError:
                 pass
             while taille < 21 or taille > 26:
@@ -68,7 +70,6 @@ def start():
                 except ValueError:
                     pass
     return taille
-
 
 
 # Création du plateau TRIANGLE
@@ -94,7 +95,7 @@ def grid_creation_triangle(n):
 # Création du plateau LOSANGE
 
 def grid_creation_losange(n):
-    grid_losange = grid_creation_triangle(n)[:len(grid_creation_triangle(n))-1]
+    grid_losange = grid_creation_triangle(n)[:len(grid_creation_triangle(n)) - 1]
     grid_losange += grid_creation_triangle(n)[::-1]
     return grid_losange
 
@@ -102,12 +103,12 @@ def grid_creation_losange(n):
 # Création du plateau CERCLE
 
 def grid_creation_cercle(taille):
-    grid_cercle =[]
-    r = taille/2-.5
+    grid_cercle = []
+    r = taille / 2 - .5
     for i in range(taille):
         ligne = []
         for j in range(taille):
-            if sqrt((i-r)**2 + (j-r)**2) <= r + 0.25:
+            if sqrt((i - r) ** 2 + (j - r) ** 2) <= r + 0.25:
                 ligne.append(1)
             else:
                 ligne.append(0)
@@ -130,13 +131,13 @@ def symb(val):
 
 def plateau(grid):
     for i in range(len(grid)):
-        print(majuscule[i] + " " + "║", end=" ") # affiche la lettre majuscule + la colonne
+        print(majuscule[i] + " " + "║", end=" ")  # affiche la lettre majuscule + la colonne
         for j in range(len(grid[i])):
-            print(symb(grid[i][j]), end=" ")   # affiche les éléments de la matrice grid correspondant au plateau
+            print(symb(grid[i][j]), end=" ")  # affiche les éléments de la matrice grid correspondant au plateau
         print("║")
 
 
-def print_grid(mat):             # Plateau + Cadre
+def print_grid(mat):  # Plateau + Cadre
     '''os.system("clear") # Mac '''
     os.system('cls')  # Windows
 
@@ -150,33 +151,33 @@ def print_grid(mat):             # Plateau + Cadre
 
     # affiche la première ligne du cadre
     print("╔", end="")
-    print("═"* (2 * longueur + 1), end="")
+    print("═" * (2 * longueur + 1), end="")
     print("╗")
 
-    plateau(mat) # affichage du plateau à partir de la fonction
+    plateau(mat)  # affichage du plateau à partir de la fonction
     print("  ", end="")
-    print("╚" + "═"*(2 * longueur + 1) + "╝") # affiche la dernière ligne du cadre
+    print("╚" + "═" * (2 * longueur + 1) + "╝")  # affiche la dernière ligne du cadre
 
 
 # Affichage des BLOCS
 
-def print_blocs(condition):      # Affiche les blocs selon le type de plateau
+def print_blocs(condition):  # Affiche les blocs selon le type de plateau
     print()
-    if condition == 1: # Triangle
+    if condition == 1:  # Triangle
         for i in triangle_list:
             for j in bloc_list[i]:
                 for k in j:
-                    print(symb_blocs(k),end=" ")
+                    print(symb_blocs(k), end=" ")
                 print()
             print()
-    elif condition == 2: # Losange
+    elif condition == 2:  # Losange
         for i in losange_list:
             for j in bloc_list[i]:
                 for k in j:
                     print(symb_blocs(k), end=" ")
                 print()
             print()
-    elif condition == 3: # Cercle
+    elif condition == 3:  # Cercle
         for i in cercle_list:
             for j in bloc_list[i]:
                 for k in j:
@@ -185,12 +186,12 @@ def print_blocs(condition):      # Affiche les blocs selon le type de plateau
             print()
 
 
-def print_random_blocs(condition):          # Affiche 3 Blocs au hasard selon le type du plateau
+def print_random_blocs(condition):  # Affiche 3 Blocs au hasard selon le type du plateau
     print()
-    list_rand = []         # Def d'une liste qui aura 3 index au hasard selon le plateau
+    list_rand = []  # Def d'une liste qui aura 3 index au hasard selon le plateau
 
     if condition == 1:  # Triangle
-        list_rand = random.sample(triangle_list,3)      # Prend 3 index au hasard
+        list_rand = random.sample(triangle_list, 3)  # Prend 3 index au hasard
         for i in list_rand:
             for j in bloc_list[i]:
                 for k in j:
@@ -215,7 +216,7 @@ def print_random_blocs(condition):          # Affiche 3 Blocs au hasard selon le
             print()
 
 
-def select_bloc():     # Demande à l'utilisateur de choisir un mode de jeu
+def select_bloc():  # Demande à l'utilisateur de choisir un mode de jeu
     mode = 0
     while mode != 1 and mode != 2:
         '''os.system("clear") # Mac '''
@@ -223,8 +224,8 @@ def select_bloc():     # Demande à l'utilisateur de choisir un mode de jeu
         print()
         print("Tapez 1 pour afficher tout les blocs")
         print("Tapez 2 pour afficher 3 blocs au hasard")
-        print(">>>",end=" ")
-        try :
+        print(">>>", end=" ")
+        try:
             mode = int(input())
         except ValueError:
             pass
@@ -247,26 +248,28 @@ def save_grid(grid):
         f_plateau.close()
 
 
-
-def row_state(grid,i):
-    ligne_pleine=True
+def row_state(grid, i):
+    ligne_pleine = True
     for m in mat[i]:
         if m == 1:
             ligne_pleine = False
     return ligne_pleine
 
-def col_state(grid,j):
-    col_pleine=True
+
+def col_state(grid, j):
+    col_pleine = True
     for m in mat:
-        if mat[m][j]==1 :
+        if mat[m][j] == 1:
             col_pleine = False
     return col_pleine
 
-def row_clear(grid,i):
-    for j in range( i , 0 , -1):
-        mat[0][j]=mat[j-1]
 
-def col_clear(grid,j):
+def row_clear(grid, i):
+    for j in range(i, 0, -1):
+        mat[0][j] = mat[j - 1]
+
+
+def col_clear(grid, j):
     for m in mat:
         for n in range(len(m)):
             if mat[m][n] == j:
@@ -287,8 +290,6 @@ def update_score():
         if mat[k]
 '''
 
-
-
 """
 def read_grid(path):
     grid = []
@@ -305,60 +306,42 @@ def read_grid(path):
         return grid_cercle
 """
 
-#Faire fonction qui laisse l'utilisateur choisir un bloc et les coordonnées où il sera poser
 
-def valid_position(grid,i,j,indice):
-    placement=True
-    cpt_ligne=-1
-    cpt_col=-1
+# Faire fonction qui laisse l'utilisateur choisir un bloc et les coordonnées où il sera poser
+
+def valid_position(grid, i, j, indice):
+    placement = True
+    cpt_ligne = -1
+    cpt_col = -1
 
     try:
-        for k in range(4,-1,-1):
-            cpt_ligne+=1
+        for k in range(4, -1, -1):
+            cpt_ligne += 1
             for p in bloc_list[indice][k]:
-                cpt_col+=1
-                if (p==1 and grid[i-cpt_ligne][j+cpt_col]!=1):
-                    placement=False
-    except ValueError:
-        placement=False
+                cpt_col += 1
+                if (p == 1 and grid[i - cpt_ligne][j + cpt_col] != 1):
+                    placement = False
+    except IndexError:
+        placement = False
     print(placement)
     return placement
 
+
 def bloc_x(indice):
     x = 0
-    x_max = 0
-    for i in bloc_list[indice]:
-        for k in i:
-            if k == 1:
-                x+=1
-        if x > x_max:
-            x_max = x
-    return x_max
-
+    for i in range(5):
+        for j in range(5):
+            if bloc_list[indice][j][i]:
+                x += 1
+                break
+    return x
 
 
 def bloc_y(indice):
     y = 0
-    for k in bloc_list[indice]:
+    for i in range(5):
         for j in range(5):
-            if bloc_list[indice][k][j]:
+            if bloc_list[indice][i][j]:
                 y += 1
                 break
     return y
-
-
-
-
-
-'''
-def pose_bloc(grid,i,j,indice):
-    if choix_plateau==1:          #Triangle
-        for k in bloc_list[triangle_list[indice]]:
-            for m in range(len(k),0,-1):
-
-
-    elif choix_plateau==2:         #Losange
-
-    elif choix_plateau==3:         #Cercle
-'''
-
