@@ -7,7 +7,7 @@ from form import *
 
 # APPLICATION
 
-def start():
+def start():        # Fonction pour demander les instructions de l'utilisateur au début du jeu
     start = 0
     while start != 1 and start != 2:
         '''os.system("clear") # Mac '''
@@ -40,11 +40,7 @@ def start():
         regle_jeu()  # Affiche les règles du jeu
         print()
 
-        try:
-            s = 0
-            s = int(input("Tapez 1 pour commencer à jouer\n>>> "))
-        except ValueError:
-            pass
+        s = 0
         while s != 1:
             '''os.system("clear") # Mac '''
             os.system('cls')  # Windows
@@ -71,6 +67,7 @@ def start():
                     pass
     return taille
 
+# ------------------------------------------------------------------------------
 
 # Création du plateau TRIANGLE
 
@@ -116,6 +113,9 @@ def grid_creation_cercle(taille):
     return grid_cercle
 
 
+# ------------------------------------------------------------------------------
+
+
 # Symboles ASCII
 
 def symb(val):
@@ -125,6 +125,15 @@ def symb(val):
         return "◇"
     elif val == 2:
         return "◆"
+
+
+def symb_bloc(val):
+    if val == 0:
+        return " "
+    elif val == 1:
+        return "◆"
+
+# ------------------------------------------------------------------------------
 
 
 # Affichage du plateau
@@ -159,64 +168,10 @@ def print_grid(mat):  # Plateau + Cadre
     print("╚" + "═" * (2 * longueur + 1) + "╝")  # affiche la dernière ligne du cadre
 
 
-# Affichage des BLOCS
-
-def print_blocs(condition):  # Affiche les blocs selon le type de plateau
-    print()
-    if condition == 1:  # Triangle
-        for i in triangle_list:
-            for j in bloc_list[i]:
-                for k in j:
-                    print(symb_blocs(k), end=" ")
-                print()
-            print()
-    elif condition == 2:  # Losange
-        for i in losange_list:
-            for j in bloc_list[i]:
-                for k in j:
-                    print(symb_blocs(k), end=" ")
-                print()
-            print()
-    elif condition == 3:  # Cercle
-        for i in cercle_list:
-            for j in bloc_list[i]:
-                for k in j:
-                    print(symb_blocs(k), end=" ")
-                print()
-            print()
+# ------------------------------------------------------------------------------
 
 
-def print_random_blocs(condition):  # Affiche 3 Blocs au hasard selon le type du plateau
-    print()
-    list_rand = []  # Def d'une liste qui aura 3 index au hasard selon le plateau
-
-    if condition == 1:  # Triangle
-        list_rand = random.sample(triangle_list, 3)  # Prend 3 index au hasard
-        for i in list_rand:
-            for j in bloc_list[i]:
-                for k in j:
-                    print(symb_blocs(k), end=" ")
-                print()
-            print()
-    elif condition == 2:  # Losange
-        list_rand = random.sample(losange_list, 3)
-        for i in list_rand:
-            for j in bloc_list[i]:
-                for k in j:
-                    print(symb_blocs(k), end=" ")
-                print()
-            print()
-    elif condition == 3:  # Cercle
-        list_rand = random.sample(cercle_list, 3)
-        for i in list_rand:
-            for j in bloc_list[i]:
-                for k in j:
-                    print(symb_blocs(k), end=" ")
-                print()
-            print()
-
-
-def select_bloc():  # Demande à l'utilisateur de choisir un mode de jeu
+def select_mode():  # Demande à l'utilisateur de choisir un mode de jeu
     mode = 0
     while mode != 1 and mode != 2:
         '''os.system("clear") # Mac '''
@@ -235,6 +190,7 @@ def select_bloc():  # Demande à l'utilisateur de choisir un mode de jeu
         x = 2
     return x
 
+# ------------------------------------------------------------------------------
 
 # Stockage dans un ficher
 
@@ -247,6 +203,23 @@ def save_grid(grid):
             f_plateau.write("\n")
         f_plateau.close()
 
+"""
+def read_grid(path):
+    grid = []
+    if path == 1:
+        with open("triangle.txt", "r") as f_t:
+            cont = f_t.readlines()
+            for l in cont:
+                grid.append(l)
+    return grid
+
+    elif path == 2:
+        return grid_losange
+    elif path == 3:
+        return grid_cercle
+"""
+
+# ------------------------------------------------------------------------------
 
 def row_state(grid, i):
     ligne_pleine = True
@@ -277,6 +250,8 @@ def col_clear(grid, j):
     for i in range(len(grid)):
         grid[0][i] = 0
 
+# ------------------------------------------------------------------------------
+
 
 '''
 def update_score():
@@ -290,26 +265,12 @@ def update_score():
         if mat[k]
 '''
 
-"""
-def read_grid(path):
-    grid = []
-    if path == 1:
-        with open("triangle.txt", "r") as f_t:
-            cont = f_t.readlines()
-            for l in cont:
-                grid.append(l)
-    return grid
-
-    elif path == 2:
-        return grid_losange
-    elif path == 3:
-        return grid_cercle
-"""
+# ------------------------------------------------------------------------------
 
 
 # Faire fonction qui laisse l'utilisateur choisir un bloc et les coordonnées où il sera poser
 
-def valid_position(grid, i, j, indice):
+def valid_position(grid, i, j, indice):            # Vérifie si le bloc choisi peut être placé
     placement = True
     cpt_ligne = -1
     cpt_col = -1
@@ -331,7 +292,7 @@ def bloc_x(indice):
     x = 0
     for i in range(5):
         for j in range(5):
-            if bloc_list[indice][j][i]:
+            if bloc_list[indice][j][i] == 1:
                 x += 1
                 break
     return x
@@ -341,7 +302,59 @@ def bloc_y(indice):
     y = 0
     for i in range(5):
         for j in range(5):
-            if bloc_list[indice][i][j]:
+            if bloc_list[indice][i][j] == 1:
                 y += 1
                 break
     return y
+
+
+def select_bloc(choix_plateau):
+    print("----------------------------------------------------------")
+    print()
+    if choix_plateau == 1:
+        l = triangle_list
+    elif choix_plateau == 2:
+        l = losange_list
+    elif choix_plateau == 3:
+        l = cercle_list
+    index = -1
+    print("Veuillez sélectionner le bloc à positioner")
+    while index not in l:
+        try:
+            index = int(input(">>> "))
+        except ValueError:
+            pass
+
+    print("Entrez la position où vous voulez poser le bloc choisi ci-dessous:")
+    for i in bloc_list[index]:
+        for element in i:
+            print(symb_bloc(element), end=" ")
+        print()
+    print(index)
+
+def coord_x():
+    print()
+    print("Coordonnée en x")
+    x = str(0)
+    while x not in minuscule:
+        try:
+            x = input(">>> ")
+        except ValueError:
+            pass
+    for cle in alph_index.keys():
+        if x == cle:
+            return alph_index[cle]
+
+
+def coord_y():
+    print()
+    print("Coordonnée en y")
+    y = str(0)
+    while y not in majuscule:
+        try:
+            y = input(">>> ")
+        except ValueError:
+            pass
+    for cle in alph_index_majuscule.keys():
+        if y == cle:
+            return alph_index_majuscule[cle]

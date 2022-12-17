@@ -18,6 +18,7 @@ def bienvenue():
     print(45*" ", end="")
     print("╚" + "═" * 75 + "╝")
     print()
+    print()
 
 
 
