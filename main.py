@@ -34,14 +34,14 @@ while run_game:
 
     init_screen(screen, choix_mode)
 
-    print_grid(mat)  # Affiche le plateau du jeu
-
-    affiche_tout(screen,choix_plateau,choix_mode)  # Affiche les blocs selon le type de plateau
-
-    select_bloc(choix_plateau)
-
-    coord_x()
-    coord_y()
+ 
+    while vies >= 3:
+        print_grid(mat)                                    # Affiche le plateau
+        affiche_tout(screen, choix_plateau, choix_mode)    # Affiche les blocs possibles à placer        
+        indice = select_bloc(choix_plateau)                # Selectionne le bloc choisis par l'utilisateur
+        print_grid(mat)                                    # Affiche le plateau
+        x,y = int(coord_x()),int(coord_y())                # Selectionne les coordonnées choisies par l'utilisateur
+        place_bloc(mat,x,y,indice)                         # Vérifie et place le bloc si possible, cas contraire -> perte d'une vie
 
     save_grid(mat) # Stock le plateau dans le ficher PLATEAU.TXT
 
