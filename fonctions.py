@@ -270,25 +270,7 @@ def update_score():
 
 # Faire fonction qui laisse l'utilisateur choisir un bloc et les coordonnées où il sera poser
 
-def valid_position(grid, i, j, indice):            # Vérifie si le bloc choisi peut être placé
-    placement = True
-    cpt_ligne = -1
-    cpt_col = -1
-
-    try:
-        for k in range(4, -1, -1):
-            cpt_ligne += 1
-            for p in bloc_list[indice][k]:
-                cpt_col += 1
-                if (p == 1 and grid[i - cpt_ligne][j + cpt_col] != 1):
-                    placement = False
-    except IndexError:
-        placement = False
-    print(placement)
-    return placement
-
-
-def bloc_x(indice):
+def hauteur_max(indice):
     x = 0
     for i in range(5):
         for j in range(5):
@@ -298,7 +280,7 @@ def bloc_x(indice):
     return x
 
 
-def bloc_y(indice):
+def longueur_max(indice):
     y = 0
     for i in range(5):
         for j in range(5):
@@ -306,6 +288,42 @@ def bloc_y(indice):
                 y += 1
                 break
     return y
+
+
+def valid_position (grid, j, i, indice):
+    placement = True
+    cpt_ligne = -1
+    cpt_col = -1
+    try:
+        for y in range(4,4-hauteur_max(indice), -1):
+            cpt_ligne += 1
+            for x in range(longueur_max(indice)):
+                cpt_col += 1
+                if bloc_list[indice][y][x] == 1:
+                    if grid[i - cpt_ligne][j + cpt_col] != 1 :
+                        placement = False
+            cpt_col = -1
+    except IndexError:
+        if bloc_list[indice][y][x]==1:
+            placement = False
+    return placement
+
+def place_bloc(grid,i,j,indice):
+    if valid_position(grid, i, j, indice) is True:
+        cpt_ligne = -1
+        cpt_col = -1
+        for y in range(4,4-hauteur_max(indice), -1):
+            cpt_ligne += 1
+            for x in range(longueur_max(indice)):
+                cpt_col += 1
+                if bloc_list[indice][y][x] == 1 and grid[i - cpt_ligne][j + cpt_col] == 1:
+                    grid[i - cpt_ligne][j + cpt_col] = 2
+            cpt_col = -1
+    else :
+        print("La position n'est pas valide ! ")
+        vies = vies -1
+        print("Vous avez perdu une vie")
+        print("Vies restantes : ",vies)
 
 
 def select_bloc(choix_plateau):
@@ -331,6 +349,7 @@ def select_bloc(choix_plateau):
             print(symb_bloc(element), end=" ")
         print()
     print(index)
+    return index
 
 def coord_x():
     print()
