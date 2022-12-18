@@ -273,7 +273,7 @@ def update_score():
 
 # Faire fonction qui laisse l'utilisateur choisir un bloc et les coordonnées où il sera poser
 
-def hauteur_max(indice):
+def longueur_max(indice):
     x = 0
     for i in range(5):
         for j in range(5):
@@ -283,7 +283,7 @@ def hauteur_max(indice):
     return x
 
 
-def longueur_max(indice):
+def hauteur_max(indice):
     y = 0
     for i in range(5):
         for j in range(5):
@@ -311,8 +311,8 @@ def valid_position (grid, j, i, indice):
             placement = False
     return placement
 
-def place_bloc(grid,i,j,indice):
-    if valid_position(grid, i, j, indice) is True:
+def place_bloc(grid,j,i,indice):
+    if valid_position(grid, j, i, indice) is True:
         cpt_ligne = -1
         cpt_col = -1
         for y in range(4,4-hauteur_max(indice), -1):
