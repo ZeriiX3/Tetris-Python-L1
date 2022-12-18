@@ -7,6 +7,9 @@ from form import *
 
 # APPLICATION
 
+global vies
+vies = 3
+
 def start():        # Fonction pour demander les instructions de l'utilisateur au début du jeu
     start = 0
     while start != 1 and start != 2:
