@@ -230,8 +230,11 @@ def row_state(grid, i):
         if m == 1:
             ligne_pleine = False
     return ligne_pleine
-
-
+'''
+for k in range(5):
+    if row_state(grid, i-4) is True :
+        grid[]
+'''
 def col_state(grid, j):
     col_pleine = True
     for m in mat:
@@ -324,9 +327,8 @@ def place_bloc(grid,j,i,indice):
             cpt_col = -1
     else :
         print("La position n'est pas valide ! ")
-        vies = vies -1
         print("Vous avez perdu une vie")
-        print("Vies restantes : ",vies)
+        return False
 
 
 def select_bloc(choix_plateau):
@@ -356,7 +358,7 @@ def select_bloc(choix_plateau):
 
 def coord_x():
     print()
-    print("Coordonnée en x")
+    print("Coordonnée en x (lettre en minuscule) : ")
     x = str(0)
     while x not in minuscule:
         try:
@@ -370,7 +372,7 @@ def coord_x():
 
 def coord_y():
     print()
-    print("Coordonnée en y")
+    print("Coordonnée en y (lettre en majuscule) : ")
     y = str(0)
     while y not in majuscule:
         try:
