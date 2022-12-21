@@ -226,7 +226,7 @@ def read_grid(path):
 
 def row_state(grid, i):
     ligne_pleine = True
-    for m in mat[i]:
+    for m in grid[i]:
         if m == 1:
             ligne_pleine = False
     return ligne_pleine
@@ -237,15 +237,16 @@ for k in range(5):
 '''
 def col_state(grid, j):
     col_pleine = True
-    for m in mat:
-        if mat[m][j] == 1:
+    for m in grid:
+        if grid[m][j] == 1:
             col_pleine = False
     return col_pleine
 
 
 def row_clear(grid, i):
-    for j in range(i, 0, -1):
-        mat[0][j] = mat[j - 1]
+    for j in range(len(grid[i])):
+        if grid[i][j] == 2:
+            grid[i][j] = 1
 
 
 def col_clear(grid, j):
