@@ -37,11 +37,15 @@ while run_game:
     vies = 3
     while vies >= 0:
         print_grid(mat)                                    # Affiche le plateau
-        affiche_tout(screen, choix_plateau, choix_mode)    # Affiche les blocs possibles à placer        
-        indice = select_bloc(choix_plateau)                # Selectionne le bloc choisis par l'utilisateur
+        affiche_tout(screen, choix_plateau, choix_mode)    # Affiche les blocs possibles à placer
+        indice = select_bloc(choix_plateau)            # Selectionne le bloc choisis par l'utilisateur
+        if choix_mode == 2:
+            while indice >2 :
+                print(">>> ")
+                indice = select_bloc(choix_plateau)
         print_grid(mat)                                    # Affiche le plateau
-        x,y = int(coord_x()), int(coord_y())                # Selectionne les coordonnées choisies par l'utilisateur
-        if place_bloc(mat, x, y,indice) is False:           # Vérifie et place le bloc si possible, cas contraire -> perte d'une vie
+        x,y = int(coord_x()), int(coord_y())               # Selectionne les coordonnées choisies par l'utilisateur
+        if place_bloc(mat, x, y,indice) is False:          # Vérifie et place le bloc si possible, cas contraire -> perte d'une vie
             vies -= 1
             print("Nombre de vies restantes : ", vies)
         for i in range(len(mat)):
