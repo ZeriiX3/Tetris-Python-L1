@@ -35,12 +35,13 @@ while run_game:
     init_screen(screen, choix_mode)
 
     vies = 3
-    while vies >= 0:
+    while vies > 0:
         print_grid(mat)                                    # Affiche le plateau
         affiche_tout(screen, choix_plateau, choix_mode)    # Affiche les blocs possibles à placer
         indice = select_bloc(choix_plateau)            # Selectionne le bloc choisis par l'utilisateur
         if choix_mode == 2:
-            while indice >2 :
+            while indice > 2:
+                print("Ce bloc n'est pas parmi ceux proposés aléatoirement")
                 print(">>> ")
                 indice = select_bloc(choix_plateau)
         print_grid(mat)                                    # Affiche le plateau
@@ -52,9 +53,12 @@ while run_game:
             if row_state(mat, i) is True:
                 print_grid(mat)
                 row_clear(mat, i)
+            if col_state(mat, i) is True:
+                print_grid(mat)
+                col_clear(mat, i)
                 #mettre un clear ici bg
-
-
+        print("Votre score est de : ",score)
+    print("Vous avez perdu, votre score final est de : ",score)
     save_grid(mat) # Stock le plateau dans le ficher PLATEAU.TXT
 
     run_game = False
