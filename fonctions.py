@@ -7,9 +7,6 @@ from form import *
 
 # APPLICATION
 
-global vies
-vies = 3
-
 def start():        # Fonction pour demander les instructions de l'utilisateur au début du jeu
     start = 0
     while start != 1 and start != 2:
@@ -223,23 +220,23 @@ def read_grid(path):
 """
 
 # ------------------------------------------------------------------------------
+global score
+score = 0
 
 def row_state(grid, i):
     ligne_pleine = True
     for m in grid[i]:
         if m == 1:
             ligne_pleine = False
+            score = score + 1
     return ligne_pleine
-'''
-for k in range(5):
-    if row_state(grid, i-4) is True :
-        grid[]
-'''
+
 def col_state(grid, j):
     col_pleine = True
-    for m in grid:
-        if grid[m][j] == 1:
-            col_pleine = False
+    for k in range(len(grid)):
+            if grid[k][j] == 1:
+                col_pleine = False
+                score = score + 1
     return col_pleine
 
 
@@ -250,27 +247,9 @@ def row_clear(grid, i):
 
 
 def col_clear(grid, j):
-    for m in mat:
-        for n in range(len(m)):
-            if mat[m][n] == j:
-                mat[m][n] = 0
-    for i in range(len(grid)):
-        grid[0][i] = 0
-
-# ------------------------------------------------------------------------------
-
-
-'''
-def update_score():
-    score=0
-    for i in mat:
-        for j in i:
-            if row_state(grid,i):
-                if j==1:
-                    score+= 1
-    for k in range(len(mat)):
-        if mat[k]
-'''
+    for n in range(len(grid)):
+        if grid[n][j] == 2:
+            grid[n][j] = 1
 
 # ------------------------------------------------------------------------------
 
