@@ -220,15 +220,12 @@ def read_grid(path):
 """
 
 # ------------------------------------------------------------------------------
-global score
-score = 0
 
 def row_state(grid, i):
     ligne_pleine = True
     for m in grid[i]:
         if m == 1:
             ligne_pleine = False
-            score = score + 1
     return ligne_pleine
 
 def col_state(grid, j):
@@ -236,7 +233,6 @@ def col_state(grid, j):
     for k in range(len(grid)):
             if grid[k][j] == 1:
                 col_pleine = False
-                score = score + 1
     return col_pleine
 
 
@@ -245,11 +241,14 @@ def row_clear(grid, i):
         if grid[i][j] == 2:
             grid[i][j] = 1
 
-
 def col_clear(grid, j):
+    score_colonne = 0
     for n in range(len(grid)):
         if grid[n][j] == 2:
             grid[n][j] = 1
+            score_colonne += 1
+    return score_colonne
+
 
 # ------------------------------------------------------------------------------
 
