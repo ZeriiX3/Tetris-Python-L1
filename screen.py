@@ -59,7 +59,7 @@ def affiche_tout(screen, choix_plateau, choix_mode):
         elif choix_mode == 2:
             rand_list = random.sample(triangle_list, 3)
             for i in range(len(rand_list)):
-                insert_bloc_screen(screen, bloc_list[triangle_list[i]], l, c, str(affichage_num(i)))
+                insert_bloc_screen(screen, bloc_list[rand_list[i]], l, c, str(rand_list[i]))
                 c += 6
     if choix_plateau == 2:
         if choix_mode == 1:
@@ -72,7 +72,7 @@ def affiche_tout(screen, choix_plateau, choix_mode):
         elif choix_mode == 2:
             rand_list = random.sample(losange_list, 3)
             for i in range(len(rand_list)):
-                insert_bloc_screen(screen, bloc_list[losange_list[i]], l, c, str(affichage_num(i)))
+                insert_bloc_screen(screen, bloc_list[rand_list[i]], l, c, str(rand_list[i]))
                 c += 6
     if choix_plateau == 3:
         if choix_mode == 1:
@@ -85,6 +85,6 @@ def affiche_tout(screen, choix_plateau, choix_mode):
         elif choix_mode == 2:
             rand_list = random.sample(cercle_list, 3)
             for i in range(len(rand_list)):
-                insert_bloc_screen(screen, bloc_list[cercle_list[i]], l, c, str(affichage_num(i)))
+                insert_bloc_screen(screen, bloc_list[rand_list[i]], l, c, str(rand_list[i]))
                 c += 6
     print_screen(screen)
