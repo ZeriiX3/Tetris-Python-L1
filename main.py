@@ -2,17 +2,18 @@ from fonctions import *
 from blocs import *
 from form import *
 from screen import *
+import sys
 
 run_game = True
 
 
-while run_game:
+while run_game and run:
 
     taille = start()    # Début du jeu
 
     choix_plateau = 0
 
-    while choix_plateau != 1 and choix_plateau !=2 and choix_plateau != 3:
+    while choix_plateau != 1 and choix_plateau !=2 and choix_plateau != 3 and choix_plateau != 999:
         '''os.system("clear") # Mac '''
         os.system('cls')  # Windows
         print("Sélectionez votre plateau")
@@ -28,7 +29,9 @@ while run_game:
         mat = grid_creation_losange(taille)
     elif choix_plateau == 3:
         mat = grid_creation_cercle(taille)
-
+    elif choix_plateau == 999 :
+        print("Vous avez arrêté la partie")
+        sys.exit()
 
     choix_mode = select_mode()      # Choisis le mode de jeu
 
@@ -42,6 +45,7 @@ while run_game:
         affiche_tout(screen, choix_plateau, choix_mode)    # Affiche les blocs possibles à placer
         indice = select_bloc(choix_plateau)                # Selectionne le bloc choisis par l'utilisateur
         print_grid(mat)                                    # Affiche le plateau
+
         x,y = int(coord_x()), int(coord_y())               # Selectionne les coordonnées choisies par l'utilisateur
         if place_bloc(mat, x, y,indice) is False:          # Vérifie et place le bloc si possible, cas contraire -> perte d'une vie
             vies -= 1
@@ -65,8 +69,7 @@ while run_game:
                 if choix_mode == 2 :
                     score = score + (col_clear(mat,i)*2)
                 print("Vous avez rempli une colonne !")
-                '''os.system("clear") # Mac '''
-                os.system('cls')  # Windows
+
         print("Votre score est de : ", score)
     print("Vous avez perdu, votre score final est de : ", score)
     save_grid(mat) # Stock le plateau dans le ficher PLATEAU.TXT
