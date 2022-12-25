@@ -3,18 +3,19 @@ import os
 from math import *
 from blocs import *
 from form import *
-
+import sys
 
 # APPLICATION
-
+run = True
 def start():        # Fonction pour demander les instructions de l'utilisateur au début du jeu
     start = 0
-    while start != 1 and start != 2:
+    while start != 1 and start != 2 and start != 999:
         '''os.system("clear") # Mac '''
         os.system('cls')  # Windows
         bienvenue()
         print("Tapez 1 pour commencer à jouer")
         print("Tapez 2 pour afficher les règles")
+        print("Tapez 999 à tout moment pour arrêter la partie")
         print(">>>", end=" ")
         try:
             start = int(input())
@@ -27,7 +28,7 @@ def start():        # Fonction pour demander les instructions de l'utilisateur a
                 input("Entrez une dimension du plateau entre 21 et 26 inclus: "))  # Définition de la taille du plateau
         except ValueError:
             pass
-        while taille < 21 or taille > 26:
+        while taille < 21 or taille>26:
             '''os.system("clear") # Mac '''
             os.system('cls')  # Windows
             print("Valeur incorrecte ou trop grande/petite!")
@@ -48,7 +49,7 @@ def start():        # Fonction pour demander les instructions de l'utilisateur a
                 s = int(input("Tapez 1 pour commencer à jouer\n>>> "))
             except ValueError:
                 pass
-        if s == 1:      # Lancement du jeu
+        if s == 1:
             taille = 0
             '''os.system("clear") # Mac '''
             os.system('cls')  # Windows
@@ -57,7 +58,10 @@ def start():        # Fonction pour demander les instructions de l'utilisateur a
                     "Entrez une dimension du plateau entre 21 et 26 inclus: "))  # Définition de la taille du plateau
             except ValueError:
                 pass
-            while taille < 21 or taille > 26:
+            if taille == 999:
+                print("Vous avez arrêté la partie")
+                sys.exit()
+            while taille > 26 or taille < 21:
                 '''os.system("clear") # Mac '''
                 os.system('cls')  # Windows
                 print("Valeur incorrecte ou trop grande/petite!")
@@ -65,6 +69,12 @@ def start():        # Fonction pour demander les instructions de l'utilisateur a
                     taille = int(input("Entrez une dimension du plateau entre 21 et 26 inclus: "))
                 except ValueError:
                     pass
+
+
+    if start == 999:
+        print("Vous avez arrêté la partie")
+        sys.exit()
+
     return taille
 
 # ------------------------------------------------------------------------------
