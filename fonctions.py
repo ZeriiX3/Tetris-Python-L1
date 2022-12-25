@@ -48,7 +48,7 @@ def start():        # Fonction pour demander les instructions de l'utilisateur a
                 s = int(input("Tapez 1 pour commencer à jouer\n>>> "))
             except ValueError:
                 pass
-        if s == 1:
+        if s == 1:      # Lancement du jeu
             taille = 0
             '''os.system("clear") # Mac '''
             os.system('cls')  # Windows
@@ -122,16 +122,16 @@ def symb(val):
     if val == 0:
         return " "
     elif val == 1:
-        return "◇"
+        return "□"
     elif val == 2:
-        return "◆"
+        return "■"
 
 
 def symb_bloc(val):
     if val == 0:
         return " "
     elif val == 1:
-        return "◆"
+        return "■"
 
 # ------------------------------------------------------------------------------
 
@@ -221,14 +221,14 @@ def read_grid(path):
 
 # ------------------------------------------------------------------------------
 
-def row_state(grid, i):
+def row_state(grid, i):     # Vérifie si la ligne est pleine ou pas
     ligne_pleine = True
     for m in grid[i]:
         if m == 1:
             ligne_pleine = False
     return ligne_pleine
 
-def col_state(grid, j):
+def col_state(grid, j):     # Vérifie si la colonne est pleine ou pas
     col_pleine = True
     for k in range(len(grid)):
             if grid[k][j] == 1:
@@ -236,12 +236,12 @@ def col_state(grid, j):
     return col_pleine
 
 
-def row_clear(grid, i):
+def row_clear(grid, i):     # Supprime tous les éléments d'une ligne pleine
     for j in range(len(grid[i])):
         if grid[i][j] == 2:
             grid[i][j] = 1
 
-def col_clear(grid, j):
+def col_clear(grid, j):     # Supprime tous les éléments d'une colonne pleine
     score_colonne = 0
     for n in range(len(grid)):
         if grid[n][j] == 2:
@@ -253,9 +253,9 @@ def col_clear(grid, j):
 # ------------------------------------------------------------------------------
 
 
-# Faire fonction qui laisse l'utilisateur choisir un bloc et les coordonnées où il sera poser
+# Fonction qui laisse l'utilisateur choisir un bloc et les coordonnées où il sera poser
 
-def longueur_max(indice):
+def longueur_max(indice):       # Prend un bloc et mesure sa longueur max
     x = 0
     for i in range(5):
         for j in range(5):
@@ -265,7 +265,7 @@ def longueur_max(indice):
     return x
 
 
-def hauteur_max(indice):
+def hauteur_max(indice):        # Prend un bloc et mesure sa hauteur max
     y = 0
     for i in range(5):
         for j in range(5):
@@ -274,6 +274,7 @@ def hauteur_max(indice):
                 break
     return y
 
+# --------------- Fonction qui permet de voir si un bloc choisi peut être placé ou pas ---------------------
 
 def valid_position (grid, j, i, indice):
     placement = True
@@ -289,11 +290,13 @@ def valid_position (grid, j, i, indice):
                         placement = False
             cpt_col = -1
     except IndexError:
-        if bloc_list[indice][y][x]==1:
+        if bloc_list[indice][y][x] == 1:
             placement = False
     return placement
 
-def place_bloc(grid,j,i,indice):
+
+
+def place_bloc(grid,j,i,indice):        #  Permet de placer le bloc choisi à la position donné pas l'utilisateur
     if valid_position(grid, j, i, indice) is True:
         cpt_ligne = -1
         cpt_col = -1
@@ -310,7 +313,7 @@ def place_bloc(grid,j,i,indice):
         return False
 
 
-def select_bloc(choix_plateau):
+def select_bloc(choix_plateau):         # Permet à l'utilisateur de choisir le bloc qu'il veut placer
     print("----------------------------------------------------------")
     print()
     if choix_plateau == 1:
@@ -334,6 +337,9 @@ def select_bloc(choix_plateau):
         print()
     print(index)
     return index
+
+
+# -------------- Convertit les coordonnées alphabetique en chiffre ----------------------
 
 def coord_x():
     print()
@@ -361,3 +367,7 @@ def coord_y():
     for cle in alph_index_majuscule.keys():
         if y == cle:
             return alph_index_majuscule[cle]
+
+# ---------------- Fonction pour quitter le jeu -------------------------
+
+

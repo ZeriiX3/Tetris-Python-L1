@@ -358,10 +358,12 @@ triangle_list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 1
                  53, 54, 55, 56]
 
 
-# Liste de lettres de majuscule
+# Liste de lettres majuscules et minuscules
 
 majuscule = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 minuscule = "abcdefghijklmnopqrstuvwxyz"
+
+# Dictionnaire avec une lettre attribuée à un chiffre et vice versa
 
 alph_index = {'a': 0, 'b': 1, 'c': 2, 'd': 3, 'e': 4, 'f': 5, 'g': 6,
              'h': 7, 'i': 8, 'j': 9, 'k': 10, 'l': 11, 'm': 12, 'n': 13,

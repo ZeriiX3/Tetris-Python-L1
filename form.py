@@ -50,8 +50,10 @@ def regle_jeu():
     print(40 * " ", end="")
     print("Le mode difficile vous restreint à 3 blocs aléatoire parmi les blocs possibles pour ce même plateau")
     print(41 * " ", end="")
-    print("ce mode vous permettera néanmoins d'obtenir plus de points pour chaque ligne ou colonne complétée")
+    print("Ce mode vous permettera néanmoins d'obtenir plus de points pour chaque ligne ou colonne complétée")
     print()
     print(35 * " ", end="")
     print("NB : Attention, les coordonnées à choisir pour placer un bloc correspondent à la case en bas à gauche du bloc (même si elle est vide)")
-    
+    print()
+    print(53 * " ", end="")
+    print("Vous aurez 3 essais pour rentrer les bonnes coordonnées sinon vous avez perdu")

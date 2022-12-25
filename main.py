@@ -65,7 +65,8 @@ while run_game:
                 if choix_mode == 2 :
                     score = score + (col_clear(mat,i)*2)
                 print("Vous avez rempli une colonne !")
-                #mettre un clear ici bg
+                '''os.system("clear") # Mac '''
+                os.system('cls')  # Windows
         print("Votre score est de : ", score)
     print("Vous avez perdu, votre score final est de : ", score)
     save_grid(mat) # Stock le plateau dans le ficher PLATEAU.TXT

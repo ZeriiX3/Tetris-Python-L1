@@ -3,7 +3,7 @@ from fonctions import *
 screen = []
 
 
-def init_screen(scr, choix_mode):
+def init_screen(scr, choix_mode):       # Initialise un "écran"(matrice) pour pouvoir afficher les blocs
     if choix_mode == 1:
         lin = 22
         col = 72
@@ -18,7 +18,7 @@ def init_screen(scr, choix_mode):
         scr.append(lst)
 
 
-def insert_bloc_screen(scr, bloc, l, c, num):
+def insert_bloc_screen(scr, bloc, l, c, num):   # Permet d'insérer les éléments que l'on veut
     for i in range(len(bloc)):
         for j in range(len(bloc[i])):
             pos_x = l + i
@@ -27,11 +27,11 @@ def insert_bloc_screen(scr, bloc, l, c, num):
         screen[l + 6][c] = num
 
 
-def print_screen(scr):
+def print_screen(scr):      # Permet d'afficher l'écran
     for i in range(len(scr)):
         for j in range(len(scr[i])):
             if scr[i][j] == 1:
-                print("◆ ", end="")
+                print("■ ", end="")
             elif scr[i][j] == 0:
                 print("  ", end="")
             else:
@@ -39,13 +39,13 @@ def print_screen(scr):
         print()
 
 
-def affichage_num(num):
+def affichage_num(num):     # Affiche correctemnt les numéros attribués au bloc
     if num < 11:
         num = " " + str(num)
     return num
 
 
-def affiche_tout(screen, choix_plateau, choix_mode):
+def affiche_tout(screen, choix_plateau, choix_mode):      # Fonction qui affiche le grand "écran" avec tous les éléments
     c = 0
     l = 0
     if choix_plateau == 1:
