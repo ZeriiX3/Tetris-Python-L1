@@ -3,6 +3,7 @@ from blocs import *
 from form import *
 from screen import *
 import sys
+import time
 
 run_game = True
 
@@ -71,6 +72,7 @@ while run_game and run:
                 print("Vous avez rempli une colonne !")
 
         print("Votre score est de : ", score)
+        time.sleep(3)
     print("Vous avez perdu, votre score final est de : ", score)
     save_grid(mat) # Stock le plateau dans le ficher PLATEAU.TXT
 
