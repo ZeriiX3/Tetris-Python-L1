@@ -41,11 +41,6 @@ while run_game:
         print_grid(mat)                                    # Affiche le plateau
         affiche_tout(screen, choix_plateau, choix_mode)    # Affiche les blocs possibles à placer
         indice = select_bloc(choix_plateau)                # Selectionne le bloc choisis par l'utilisateur
-        if choix_mode == 2:
-            while indice > 2:
-                print("Ce bloc n'est pas parmi ceux proposés aléatoirement")
-                print(">>> ")
-                indice = select_bloc(choix_plateau)
         print_grid(mat)                                    # Affiche le plateau
         x,y = int(coord_x()), int(coord_y())               # Selectionne les coordonnées choisies par l'utilisateur
         if place_bloc(mat, x, y,indice) is False:          # Vérifie et place le bloc si possible, cas contraire -> perte d'une vie
