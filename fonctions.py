@@ -7,6 +7,7 @@ import sys
 
 # APPLICATION
 run = True
+
 def start():        # Fonction pour demander les instructions de l'utilisateur au début du jeu
     start = 0
     while start != 1 and start != 2 and start != 999:
@@ -15,7 +16,7 @@ def start():        # Fonction pour demander les instructions de l'utilisateur a
         bienvenue()
         print("Tapez 1 pour commencer à jouer")
         print("Tapez 2 pour afficher les règles")
-        print("Tapez 999 à tout moment pour arrêter la partie")
+        print("Tapez 999 pour arrêter la partie")
         print(">>>", end=" ")
         try:
             start = int(input())
@@ -377,7 +378,3 @@ def coord_y():
     for cle in alph_index_majuscule.keys():
         if y == cle:
             return alph_index_majuscule[cle]
-
-# ---------------- Fonction pour quitter le jeu -------------------------
-
-

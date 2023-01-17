@@ -46,8 +46,10 @@ def affichage_num(num):     # Affiche correctemnt les numéros attribués au blo
 
 
 def affiche_tout(screen, choix_plateau, choix_mode):      # Fonction qui affiche le grand "écran" avec tous les éléments
+
     c = 0
     l = 0
+
     if choix_plateau == 1:
         if choix_mode == 1:
             for i in triangle_list:
@@ -61,6 +63,7 @@ def affiche_tout(screen, choix_plateau, choix_mode):      # Fonction qui affiche
             for i in range(len(rand_list)):
                 insert_bloc_screen(screen, bloc_list[rand_list[i]], l, c, str(rand_list[i]))
                 c += 6
+
     if choix_plateau == 2:
         if choix_mode == 1:
             for i in losange_list:
@@ -74,6 +77,7 @@ def affiche_tout(screen, choix_plateau, choix_mode):      # Fonction qui affiche
             for i in range(len(rand_list)):
                 insert_bloc_screen(screen, bloc_list[rand_list[i]], l, c, str(rand_list[i]))
                 c += 6
+
     if choix_plateau == 3:
         if choix_mode == 1:
             for i in cercle_list:
@@ -87,4 +91,5 @@ def affiche_tout(screen, choix_plateau, choix_mode):      # Fonction qui affiche
             for i in range(len(rand_list)):
                 insert_bloc_screen(screen, bloc_list[rand_list[i]], l, c, str(rand_list[i]))
                 c += 6
+
     print_screen(screen)

@@ -47,7 +47,7 @@ while run_game and run:
         indice = select_bloc(choix_plateau)                # Selectionne le bloc choisis par l'utilisateur
         print_grid(mat)                                    # Affiche le plateau
 
-        x,y = int(coord_x()), int(coord_y())               # Selectionne les coordonnées choisies par l'utilisateur
+        x,y = coord_x(), coord_y()            # Selectionne les coordonnées choisies par l'utilisateur
         if place_bloc(mat, x, y,indice) is False:          # Vérifie et place le bloc si possible, cas contraire -> perte d'une vie
             vies -= 1
             print("Nombre de vies restantes : ", vies)
@@ -72,8 +72,9 @@ while run_game and run:
                 print("Vous avez rempli une colonne !")
 
         print("Votre score est de : ", score)
-        time.sleep(3)
+        time.sleep(2)
     print("Vous avez perdu, votre score final est de : ", score)
+
     save_grid(mat) # Stock le plateau dans le ficher PLATEAU.TXT
 
     run_game = False
